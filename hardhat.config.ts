@@ -47,6 +47,7 @@ const config: HardhatUserConfig = {
   },
   dependencyCompiler: { // add your dependencies here
     paths: [
+      "@openzeppelin/contracts/token/ERC721/ERC721.sol"
     ],
   }
 };

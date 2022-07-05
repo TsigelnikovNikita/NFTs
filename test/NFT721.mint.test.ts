@@ -1,17 +1,16 @@
 import { expect } from "chai";
-import { Contract, Signer } from "ethers";
+import { Signer } from "ethers";
 import { ethers } from "hardhat";
+import { NFT721, NFT721__factory } from "../typechain-types";
 
 describe("NFT721.mint", () => {
-  let nft721 : Contract;
+  let nft721 : NFT721;
   let owner : Signer;
   let user : Signer;
 
   beforeEach(async () => {
     [owner, user] = await ethers.getSigners();
-    const NFT721 = await ethers.getContractFactory("NFT721");
-    nft721 = await NFT721.deploy("Crypton Studio NFT", "CSN", "TokenURI");
-    await nft721.deployed();
+    nft721 = await new NFT721__factory(owner).deploy("Crypton Studio NFT", "CSN", "TokenURI");
   });
 
   it("must mint new NFT", async () => {

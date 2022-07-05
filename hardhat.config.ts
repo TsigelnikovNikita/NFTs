@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 
-import { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig, task } from "hardhat/config";
 
 import "@nomiclabs/hardhat-waffle";
 import "hardhat-gas-reporter"; // https://www.npmjs.com/package/hardhat-gas-reporter
@@ -8,6 +8,17 @@ import "@nomiclabs/hardhat-etherscan"; // https://www.npmjs.com/package/@nomicla
 import "hardhat-dependency-compiler"; // https://www.npmjs.com/package/hardhat-dependency-compiler
 import "solidity-coverage"; // https://www.npmjs.com/package/solidity-coverage
 import "hardhat-storage-layout"; // https://www.npmjs.com/package/hardhat-storage-layout
+import "@typechain/hardhat"; // https://www.npmjs.com/package/@typechain/hardhat
+
+// This is a sample Hardhat task. To learn how to create your own go to
+// https://hardhat.org/guides/create-task.html
+task("accounts", "Prints the list of accounts", async (_, {ethers}) => {
+  const accounts = await ethers.getSigners();
+
+  for (const account of accounts) {
+    console.log(account.address);
+  }
+});
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
@@ -50,6 +61,9 @@ const config: HardhatUserConfig = {
       "@openzeppelin/contracts/token/ERC721/ERC721.sol",
       "@openzeppelin/contracts/utils/Strings.sol"
     ],
+  },
+  typechain: {
+    target: "ethers-v5"
   }
 };
 

@@ -20,6 +20,7 @@ task("accounts", "Prints the list of accounts", async (_, {ethers}) => {
   }
 });
 
+import "./tasks/NFT721.mint";
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 

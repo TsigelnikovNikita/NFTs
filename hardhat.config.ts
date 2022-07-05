@@ -49,7 +49,7 @@ const config: HardhatUserConfig = {
   defaultNetwork: process.env.DEFAULT_NETWORK || "hardhat",
   networks: {
     rinkeby: {
-      url: process.env.ROPSTEN_URL || "",
+      url: process.env.RINKEBY_URI || "",
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
   },

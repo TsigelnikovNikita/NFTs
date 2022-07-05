@@ -1,7 +1,7 @@
 import hre from "hardhat";
 
 // Change name of contract here
-const CONTRACT_NAME="CONTRACT_NAME";
+const CONTRACT_NAME="NFT721";
 
 /*
  * This script will generate and show report of storage layout of your contract using
@@ -12,7 +12,9 @@ async function main() {
     await hre.storageLayout.export();
 
     const contractFactory = await hre.ethers.getContractFactory(CONTRACT_NAME);
-    const contract = await contractFactory.deploy();
+    const contract = await contractFactory.deploy(process.env.TOKEN_NAME!,
+                                                    process.env.TOKEN_SYMBOL!,
+                                                    process.env.TOKEN_URI!);
     await contract.deployed();
 }
 

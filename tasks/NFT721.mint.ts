@@ -15,4 +15,3 @@ task("nft721-mint", "Allows to mint new NFT")
           console.log(error.reason);
       });
   });
-  
